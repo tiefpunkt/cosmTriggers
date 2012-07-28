@@ -2,24 +2,33 @@
 	// Config
   $template_path = "./templates/";
   $email = "severin@schols.de";
+  $authorized_feeds = array(42055, 63631);
   
   // Debug mode?!?
   $debug = file_exists("DEBUG_ENABLED");
 	
 	// Get input information from POST request
 	if (!isset($_POST['body'])) {
-		echo "missing information";
+		header("HTTP/1.0 400 Bad Request");
+		echo "Missing information";
 		exit;
 	}
 	$body = $_POST['body'];
 	$json = json_decode($body);
 	
 	// Sanitize inputs
+	if (!in_array($json->environment->id, $authorized_feeds)) {
+		header("HTTP/1.0 403 Forbidden");
+		echo "Feed not authorized!";
+		exit();
+	}
+
 	if (!in_array($json->type, array("gt", "gte", "lt", "lte", "eq", "change", "frozen", "live"))) {
+			header("HTTP/1.0 400 Bad Request");
 			echo "Invalid type";
 			exit();
 	}
-	
+		
 	// Read content from template
 	$content = file_get_contents($template_path . $json->type);
 	
@@ -34,6 +43,7 @@
 		);
 	$content = str_replace(array_keys($replacements), array_values($replacements), $content);
 	
+	// Email fields
 	$subject = "Cosm Trigger from feed \"{$json->environment->title}\"";
 	$headers = "From: cosmTrigger <cosmtrigger@tiefpunkt.com>\r\n".
     "Reply-To: severin@tiefpunkt.com\r\n";
