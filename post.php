@@ -35,14 +35,17 @@
 	$content = str_replace(array_keys($replacements), array_values($replacements), $content);
 	
 	$subject = "Cosm Trigger from feed \"{$json->environment->title}\"";
-	//$content = "Frozen datastream: " . $json->triggering_datastream->url;
+	$headers = "From: cosmTrigger <cosmtrigger@tiefpunkt.com>\r\n".
+    "Reply-To: severin@tiefpunkt.com\r\n" .
+    "X-Mailer: PHP/" . phpversion();
+	$content = wordwrap($content, 70);
 	
 	// Debug Output
 	if ($debug) {
-		echo "<html><body><h3>$subject</h3><p><i>To: $email</i></p><pre>$content</pre></body></html>";
+		echo "<html><body><h3>$subject</h3><p><i>To: $email</i></p><pre>".htmlentities($content)."</pre></body></html>";
 		exit();
 	}
 	
 	// Send eMail
-	mail($email, $subject , $content);
+	mail($email, $subject , $content, $header);
 ?>
