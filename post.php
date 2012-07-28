@@ -36,8 +36,7 @@
 	
 	$subject = "Cosm Trigger from feed \"{$json->environment->title}\"";
 	$headers = "From: cosmTrigger <cosmtrigger@tiefpunkt.com>\r\n".
-    "Reply-To: severin@tiefpunkt.com\r\n" .
-    "X-Mailer: PHP/" . phpversion();
+    "Reply-To: severin@tiefpunkt.com\r\n";
 	$content = wordwrap($content, 70);
 	
 	// Debug Output
@@ -47,5 +46,5 @@
 	}
 	
 	// Send eMail
-	mail($email, $subject , $content, $header);
+	mail($email, $subject , $content, $headers);
 ?>
