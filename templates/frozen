@@ -1,0 +1,7 @@
+Dear Cosm user,
+
+we recieved a trigger event from your Cosm Feed "%FEED_TITLE%". Your datastream "%DATASTREAM_ID%" is frozen. This means it has not recieved any updates in the last 15 minutes. The last update happened at %DATASTREAM_TIMESTAMP%.
+
+Sincerly,
+
+Your cosmTrigger team.

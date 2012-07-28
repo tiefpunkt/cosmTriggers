@@ -1,0 +1,7 @@
+Dear Cosm user,
+
+we recieved a trigger event from your Cosm Feed "%FEED_TITLE%". Your datastream "%DATASTREAM_ID%" has reached a threshold at %DATASTREAM_TIMESTAMP%. The current value is %DATASTREAM_CURRENT_VALUE%.
+
+Sincerly,
+
+Your cosmTrigger team.
