@@ -14,3 +14,6 @@ Cosm is an awesome web service for collecting any kind of data. It offers the po
 3. Adjust templates to your liking.
 4. Go to your Cosm feeds, add a trigger, select "HTTP Request" as your method of notification, and insert the full URL to your `post.php` file.
 5. Enjoy your email notifications.
+
+## License
+Licensed under MIT license. See LICENSE for details.
