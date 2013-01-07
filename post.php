@@ -1,7 +1,7 @@
 <?php
 	// Config
   $template_path = "./templates/";
-  $email = "severin@schols.de";
+  $email = "YOUR_EMAIL_ADDRESS@example.com";
   $authorized_feeds = array(42055, 63631);
   
   // Debug mode?!?
